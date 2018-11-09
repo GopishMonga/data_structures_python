@@ -61,6 +61,17 @@ class LinkedList:
             first_iterator = first_iterator.next
             second_iterator = second_iterator.next.next
         print("Middle node is {}".format(str(first_iterator.data)))
+    # function to check loop
+    def check_loop(self):
+        first_iterator = self.head
+        second_iterator = self.head
+        while first_iterator and second_iterator and second_iterator.next:
+            first_iterator = first_iterator.next
+            second_iterator = second_iterator.next.next
+            if first_iterator == second_iterator:
+                print("Loop found!")
+                return
+        print("No loop found!")
 
 # Code Execution starts here
 if __name__ == '__main__':
@@ -95,3 +106,12 @@ if __name__ == '__main__':
     linked_list.add_node_front(20)
     linked_list.print_linked_list()
     linked_list.get_middle_node()
+    # create a linked list with loop
+    linked_list_looped = LinkedList()
+    linked_list_looped.head = Node(50)
+    linked_list_looped.head.next = Node(51)
+    linked_list_looped.head.next.next = Node(52)
+    linked_list_looped.head.next.next.next = linked_list_looped.head
+    # Check loop in linked list
+    linked_list.check_loop()
+    linked_list_looped.check_loop()
