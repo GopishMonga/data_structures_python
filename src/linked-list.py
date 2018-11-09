@@ -10,12 +10,12 @@ class LinkedList:
         self.head = None
     # function to print linked list
     def print_linked_list(self):
-        print("\nPrinting Linked List")
+        print("Printing Linked List")
         head = self.head
         while head:
             print("->"+str(head.data),end="")
             head = head.next
-        print()
+        print("\n")
     # function to insert node at front
     def add_node_front(self,data):
         node = Node(data)
@@ -28,6 +28,17 @@ class LinkedList:
         while iterator.next:
             iterator = iterator.next
         iterator.next = node
+    # function to insert node at given position
+    def add_node_position(self,data,position):
+        node = Node(data)
+        iterator = self.head
+        counter = 2
+        while counter < position:
+            iterator = iterator.next
+            counter += 1
+        node.next = iterator.next
+        iterator.next = node
+
 
 # Code Execution starts here
 if __name__ == '__main__':
@@ -48,4 +59,7 @@ if __name__ == '__main__':
     linked_list.print_linked_list()
     # insert node at end
     linked_list.add_node_end(5)
+    linked_list.print_linked_list()
+    # insert node at position 4
+    linked_list.add_node_position(10,4)
     linked_list.print_linked_list()
