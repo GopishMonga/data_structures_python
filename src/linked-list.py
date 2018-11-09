@@ -21,6 +21,13 @@ class LinkedList:
         node = Node(data)
         node.next = self.head
         self.head = node
+    # function to insert node at end
+    def add_node_end(self,data):
+        node = Node(data)
+        iterator = self.head
+        while iterator.next:
+            iterator = iterator.next
+        iterator.next = node
 
 # Code Execution starts here
 if __name__ == '__main__':
@@ -38,4 +45,7 @@ if __name__ == '__main__':
     linked_list.print_linked_list()
     # insert node at front
     linked_list.add_node_front(4)
+    linked_list.print_linked_list()
+    # insert node at end
+    linked_list.add_node_end(5)
     linked_list.print_linked_list()
