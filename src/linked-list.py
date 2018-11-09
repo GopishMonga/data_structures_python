@@ -38,7 +38,21 @@ class LinkedList:
             counter += 1
         node.next = iterator.next
         iterator.next = node
-
+    # function to access n'th element from end
+    def get_node_from_end(self,n):
+        if self.head is None:
+            print("\nLinked List is empty")
+            return
+        else:
+            first_iterator = self.head
+            second_iterator = self.head
+            # move second_iterator ahead by "n" nodes
+            for i in range(n):
+                second_iterator = second_iterator.next
+            while second_iterator:
+                first_iterator = first_iterator.next
+                second_iterator = second_iterator.next
+            print("Node at {}st position from end is {}".format(str(n),str(first_iterator.data)))
 
 # Code Execution starts here
 if __name__ == '__main__':
@@ -63,3 +77,5 @@ if __name__ == '__main__':
     # insert node at position 4
     linked_list.add_node_position(10,4)
     linked_list.print_linked_list()
+    # get 4th node from end
+    linked_list.get_node_from_end(5)
