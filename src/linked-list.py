@@ -53,6 +53,14 @@ class LinkedList:
                 first_iterator = first_iterator.next
                 second_iterator = second_iterator.next
             print("Node at {}st position from end is {}".format(str(n),str(first_iterator.data)))
+    # function to get the middle of linked list
+    def get_middle_node(self):
+        first_iterator = self.head
+        second_iterator = self.head
+        while second_iterator and second_iterator.next:
+            first_iterator = first_iterator.next
+            second_iterator = second_iterator.next.next
+        print("Middle node is {}".format(str(first_iterator.data)))
 
 # Code Execution starts here
 if __name__ == '__main__':
@@ -73,9 +81,17 @@ if __name__ == '__main__':
     linked_list.print_linked_list()
     # insert node at end
     linked_list.add_node_end(5)
+    #linked_list.add_node_end(20)
     linked_list.print_linked_list()
     # insert node at position 4
     linked_list.add_node_position(10,4)
     linked_list.print_linked_list()
     # get 4th node from end
     linked_list.get_node_from_end(5)
+    # get middle node for even nodes
+    linked_list.print_linked_list()
+    linked_list.get_middle_node()
+    # get middle node for odd nodes
+    linked_list.add_node_front(20)
+    linked_list.print_linked_list()
+    linked_list.get_middle_node()
